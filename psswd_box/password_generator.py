@@ -97,13 +97,13 @@ class PasswordGenerator:
             return exit()
         choices = self.get_valid_choices()
         counter = 0
-        password = ""
+        psswd = ""
 
         while counter < self.num_characters:
-            password += choice(choices)
+            psswd += choice(choices)
             counter += 1
 
-        return password
+        return psswd
 
     def get_valid_choices(self):
         match self.character_types:
@@ -149,8 +149,8 @@ class PasswordGenerator:
 
 def main():
 
-    password = PasswordGenerator()
-    print(password.generate_password())
+    psswd = PasswordGenerator()
+    print(psswd.generate_password())
 
 
 if __name__ == "__main__":
