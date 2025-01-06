@@ -2,9 +2,7 @@ from secrets import choice
 
 
 class PasswordGenerator:
-    def __init__(self, character_types=["y", "y", "y", "y"], num_characters=20):
-        self.character_types = character_types
-        self.num_characters = num_characters
+    def __init__(self):
         self.lowercase_letters = [
             "a",
             "b",
@@ -91,22 +89,26 @@ class PasswordGenerator:
             "~",
         ]
 
-    def generate_password(self):
-        if self.character_types == ["n", "n", "n", "n"]:
+    def generate_password(
+        self, character_types=["y", "y", "y", "y"], num_characters=20
+    ):
+
+        if character_types == ["n", "n", "n", "n"]:
             print("You didn't include any character types... Exiting")
             return exit()
-        choices = self.get_valid_choices()
-        counter = 0
+        choices = self.get_valid_choices(character_types)
+        num_psswds_counter = 0
+        character_counter = 0
         psswd = ""
 
-        while counter < self.num_characters:
+        while character_counter < num_characters:
             psswd += choice(choices)
-            counter += 1
+            character_counter += 1
 
         return psswd
 
-    def get_valid_choices(self):
-        match self.character_types:
+    def get_valid_choices(self, character_types):
+        match character_types:
             case ["y", "y", "y", "y"]:
                 return (
                     self.lowercase_letters
