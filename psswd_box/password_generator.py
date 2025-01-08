@@ -90,7 +90,7 @@ class PasswordGenerator:
         ]
 
     def generate_password(
-        self, character_types=["y", "y", "y", "y"], num_characters=20, num_psswds=1
+        self, character_types=["y", "y", "y", "y"], num_characters=20
     ):
 
         if character_types == ["n", "n", "n", "n"]:
@@ -98,19 +98,14 @@ class PasswordGenerator:
             return exit()
 
         choices = self.get_valid_choices(character_types)
-        psswds_counter = 0
+        character_counter = 0
+        psswd = ""
 
-        while psswds_counter < num_psswds:
-            psswd = ""
-            character_counter = 0
+        while character_counter < num_characters:
+            psswd += choice(choices)
+            character_counter += 1
 
-            while character_counter < num_characters:
-                psswd += choice(choices)
-                character_counter += 1
-
-            print(psswd)
-
-            psswds_counter += 1
+        return psswd
 
     def get_valid_choices(self, character_types):
         match character_types:
@@ -157,7 +152,7 @@ class PasswordGenerator:
 def main():
 
     psswd = PasswordGenerator()
-    psswd.generate_password()
+    print(psswd.generate_password())
 
 
 if __name__ == "__main__":
