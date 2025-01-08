@@ -1,4 +1,4 @@
-<p align="center"> <img src="psswd_box/images/scramble-generator-cube-with-text.png" width=400" height="400" /> </p>
+<p align="center"> <img src="psswd_box/images/psswd_box.png" width=400" height="400" /> </p>
 
 ## Donations
 
