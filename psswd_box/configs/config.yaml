@@ -1,0 +1,12 @@
+window_title: "Psswd Box"
+window_size:
+  width: 740
+  height: 300
+num_characters:
+  min: 10
+  max: 100
+  default: 20
+num_passwords:
+  min: 1
+  max: 5
+  default: 1
