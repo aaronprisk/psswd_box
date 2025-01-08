@@ -19,7 +19,7 @@ from password_generator import PasswordGenerator
 from file_handler import FileHandler
 
 
-icon = FileHandler("images/psswd_box.ico")
+icon = FileHandler("images/psswd_box.png")
 
 config_file = FileHandler("configs/config.yaml")
 themes_file = FileHandler("configs/themes.yaml")
@@ -106,10 +106,13 @@ class MainWindow(QMainWindow):
 
     def get_password(self):
         character_types = self.get_character_types()
-        psswd = PasswordGenerator()
-        self.password.setText(
-            psswd.generate_password(character_types, self.num_characters.value())
-        )
+        if character_types == ["n", "n", "n", "n"]:
+            self.password.setText("You MUST select one of the character types below!")
+        else:
+            psswd = PasswordGenerator()
+            self.password.setText(
+                psswd.generate_password(character_types, self.num_characters.value())
+            )
 
     def get_character_types(self):
         lowercase_letters_value = "y" if self.lowercase_letters.isChecked() else "n"
