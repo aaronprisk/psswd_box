@@ -43,7 +43,7 @@ class MainWindow(QMainWindow):
         self.theme_list = [theme for theme in list(themes)[:-1]]
 
         # * Create end user widgets and apply settings to them
-        self.generate_password = QPushButton("Generate Password(s)")
+        self.generate_password = QPushButton("Generate Password")
 
         self.password = QLabel(
             " ", alignment=Qt.AlignmentFlag.AlignCenter, wordWrap=False
