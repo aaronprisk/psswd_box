@@ -2,3 +2,4 @@ psswd_box/__pycache__/
 ignore/
 tests/
 bandit.yaml
+dist/
