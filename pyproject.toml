@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "psswd-box"
-version = "0.1.0"
+version = "1.0.0"
 description = ""
 authors = ["Melvin Quick <melvinquick@proton.me>"]
 readme = "README.md"
