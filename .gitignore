@@ -3,3 +3,4 @@ ignore/
 tests/
 bandit.yaml
 dist/
+build/
