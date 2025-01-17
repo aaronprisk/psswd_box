@@ -1,4 +1,4 @@
-import sys
+import sys, darkdetect
 
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon
@@ -71,7 +71,7 @@ class MainWindow(QMainWindow):
         )
         self.num_characters.setValue(config["num_characters"]["default"])
 
-        self.theme_toggle = QPushButton("Dark")
+        self.theme_toggle = QPushButton(f"{darkdetect.theme()}")
 
         # * Define button connections and/or actions
         self.generate_password.pressed.connect(self.get_password)
