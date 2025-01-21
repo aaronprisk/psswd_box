@@ -1,4 +1,4 @@
-<p align="center"> <img src="psswd_box/images/psswd_box.png" width=400" height="400" /> </p>
+<p align="center"> <img src="psswd_box/resources/images/psswd_box.png" width=400" height="400" /> </p>
 
 ## Donations
 
@@ -11,7 +11,7 @@ The general purpose of this app is to give people an easy way to generate passwo
 
 ## App Showcase
 
-![app_showcase_password_generation.gif](psswd_box/gifs/app_showcase.gif)
+![app_showcase_password_generation.gif](psswd_box/resources/gifs/app_showcase.gif)
 
 ## Useful Information
 
