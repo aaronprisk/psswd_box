@@ -1,7 +1,7 @@
 from secrets import choice
 
 
-class PsswdBoxGenerator:
+class PasswordGenerator:
     def __init__(self):
         self.lowercase_letters = [
             "a",
