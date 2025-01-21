@@ -1,7 +1,7 @@
 from secrets import choice
 
 
-class PasswordGenerator:
+class PsswdBoxGenerator:
     def __init__(self):
         self.lowercase_letters = [
             "a",
@@ -147,13 +147,3 @@ class PasswordGenerator:
             case ["n", "n", "n", "n"]:
                 print("You didn't include any character types... Exiting")
                 return exit()
-
-
-def main():
-
-    psswd = PasswordGenerator()
-    print(psswd.generate_password())
-
-
-if __name__ == "__main__":
-    main()

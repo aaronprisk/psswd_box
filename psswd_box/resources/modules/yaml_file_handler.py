@@ -1,7 +1,7 @@
 import os, yaml
 
 
-class FileHandler:
+class YamlFileHandler:
     def __init__(self, filename):
         self.filename = filename
 
