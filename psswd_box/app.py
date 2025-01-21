@@ -15,8 +15,8 @@ from PySide6.QtWidgets import (
     QSpinBox,
 )
 
-from modules.password_generator import PasswordGenerator
-from modules.yaml_file_handler import YamlFileHandler
+from password_generator import PasswordGenerator
+from yaml_file_handler import YamlFileHandler
 
 
 icon = YamlFileHandler("resources/images/psswd_box.png")
