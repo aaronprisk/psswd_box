@@ -15,14 +15,14 @@ from PySide6.QtWidgets import (
     QSpinBox,
 )
 
-from password_generator import PasswordGenerator
-from file_handler import FileHandler
+from modules.password_generator import PasswordGenerator
+from modules.yaml_file_handler import YamlFileHandler
 
 
-icon = FileHandler("images/psswd_box.png")
+icon = YamlFileHandler("resources/images/psswd_box.png")
 
-config_file = FileHandler("configs/config.yaml")
-themes_file = FileHandler("configs/themes.yaml")
+config_file = YamlFileHandler("resources/configs/config.yaml")
+themes_file = YamlFileHandler("resources/configs/themes.yaml")
 
 config = config_file.load_yaml_file()
 themes = themes_file.load_yaml_file()
