@@ -2,6 +2,7 @@
 name = "psswd-box"
 version = "1.0.0"
 description = ""
+license = "MIT"
 authors = ["Melvin Quick <melvinquick@proton.me>"]
 readme = "README.md"
 
