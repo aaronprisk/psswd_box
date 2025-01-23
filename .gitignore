@@ -1,6 +1,4 @@
 psswd_box/__pycache__/
-ignore/
-tests/
+venv/
 bandit.yaml
-dist/
-build/
+requirements.in
