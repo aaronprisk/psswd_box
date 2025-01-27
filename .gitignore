@@ -1,4 +1,4 @@
-psswd_box/__pycache__/
+psswdbox/src/psswdbox/__pycache__/
 venv/
 bandit.yaml
 requirements.in

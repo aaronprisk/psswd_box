@@ -1,7 +1,12 @@
-import sys, darkdetect
+"""
+Password generator that never leaves your machine.
+"""
 
-from PySide6.QtCore import Qt
-from PySide6.QtGui import QIcon
+import importlib.metadata
+import sys
+
+from PySide6.QtCore import Qt, QSize
+from PySide6.QtGui import QIcon, QPixmap
 from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
@@ -15,29 +20,29 @@ from PySide6.QtWidgets import (
     QSpinBox,
 )
 
-from password_generator import PasswordGenerator
-from yaml_file_handler import YamlFileHandler
-
-
-icon = YamlFileHandler("resources/images/psswd_box.png")
+from psswdbox.password_generator import PasswordGenerator
+from psswdbox.yaml_file_handler import YamlFileHandler
 
 config_file = YamlFileHandler("resources/configs/config.yaml")
-themes_file = YamlFileHandler("resources/configs/themes.yaml")
-
 config = config_file.load_yaml_file()
+
+themes_file = YamlFileHandler("resources/configs/themes.yaml")
 themes = themes_file.load_yaml_file()
 
 
-class MainWindow(QMainWindow):
+class PsswdBox(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.init_ui()
+
+    def init_ui(self):
+        self.show()
 
         # * Set window default settings
         self.setWindowTitle(config["window_title"])
         self.setFixedSize(
             config["window_size"]["width"], config["window_size"]["height"]
         )
-        self.setWindowIcon(QIcon(icon.get_file_path()))
 
         # *  Define normal variables
         self.theme_list = [theme for theme in list(themes)[:-1]]
@@ -71,7 +76,7 @@ class MainWindow(QMainWindow):
         )
         self.num_characters.setValue(config["num_characters"]["default"])
 
-        self.theme_toggle = QPushButton(f"{darkdetect.theme()}")
+        self.theme_toggle = QPushButton("Dark")
 
         # * Define button connections and/or actions
         self.generate_password.pressed.connect(self.get_password)
@@ -167,12 +172,22 @@ class MainWindow(QMainWindow):
 
 
 def main():
+    # Linux desktop environments use an app's .desktop file to integrate the app
+    # in to their application menus. The .desktop file of this app will include
+    # the StartupWMClass key, set to app's formal name. This helps associate the
+    # app's windows to its menu item.
+    #
+    # For association to work, any windows of the app must have WMCLASS property
+    # set to match the value set in app's desktop file. For PySide6, this is set
+    # with setApplicationName().
+
+    # Find the name of the module that was used to start the app
+    app_module = sys.modules["__main__"].__package__
+    # Retrieve the app's metadata
+    metadata = importlib.metadata.metadata(app_module)
+
+    QApplication.setApplicationName(metadata["Formal-Name"])
+
     app = QApplication(sys.argv)
-    app.setStyle("Breeze")
-    window = MainWindow()
-    window.show()
-    app.exec()
-
-
-if __name__ == "__main__":
-    main()
+    main_window = PsswdBox()
+    sys.exit(app.exec())
