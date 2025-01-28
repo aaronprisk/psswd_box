@@ -16,3 +16,5 @@ The general purpose of this app is to give people an easy way to generate passwo
 ## Useful Information
 
 - [Project Goals](https://codeberg.org/melvinquick/psswd_box/projects/12633)
+- [Latest Release](https://codeberg.org/melvinquick/psswd_box/releases/latest)
+- [Releases](https://codeberg.org/melvinquick/psswd_box/releases)
