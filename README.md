@@ -11,7 +11,7 @@ The general purpose of this app is to give people an easy way to generate passwo
 
 ## App Showcase
 
-![app_showcase_password_generation.gif](psswdbox/src/psswdbox/resources/gifs/app_showcase.gif)
+![app_showcase.gif](psswdbox/src/psswdbox/resources/gifs/app_showcase.gif)
 
 ## Useful Information
 
