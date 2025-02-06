@@ -18,6 +18,7 @@ from PySide6.QtWidgets import (
     QComboBox,
     QHBoxLayout,
     QSpinBox,
+    QGridLayout,
 )
 
 from psswdbox.password_generator import PasswordGenerator
@@ -53,11 +54,7 @@ class PsswdBox(QMainWindow):
         self.password = QLabel(
             " ", alignment=Qt.AlignmentFlag.AlignCenter, wordWrap=True
         )
-        self.password.setTextInteractionFlags(
-            Qt.TextInteractionFlag.TextSelectableByMouse
-            | Qt.TextInteractionFlag.TextSelectableByKeyboard
-        )
-        self.password.setFixedWidth(520)
+        self.password.setMinimumWidth(560)
 
         self.lowercase_letters = QCheckBox("Lowercase")
         self.lowercase_letters.setCheckState(Qt.CheckState.Checked)
@@ -85,34 +82,24 @@ class PsswdBox(QMainWindow):
         self.theme_toggle.pressed.connect(self.toggle_theme)
 
         # * Create layouts
-        self.page = QHBoxLayout()
-
-        self.left_menu = QVBoxLayout()
-        self.left_menu.setSpacing(2)
-
-        self.checkbox_grouping_1 = QHBoxLayout()
-        self.checkbox_grouping_1.setSpacing(2)
-
-        self.checkbox_grouping_2 = QHBoxLayout()
-        self.checkbox_grouping_2.setSpacing(2)
+        self.page = QGridLayout()
+        self.inputs = QGridLayout()
+        self.outputs = QHBoxLayout()
 
         # * Add widgets to layouts
-        self.left_menu.addWidget(self.generate_password)
+        self.inputs.addWidget(self.generate_password, 0, 0, 1, 2)
+        self.inputs.addWidget(self.lowercase_letters, 1, 0)
+        self.inputs.addWidget(self.uppercase_letters, 1, 1)
+        self.inputs.addWidget(self.numbers, 2, 0)
+        self.inputs.addWidget(self.symbols, 2, 1)
+        self.inputs.addWidget(self.num_characters, 3, 0, 1, 2)
+        self.inputs.addWidget(self.theme_toggle, 4, 0, 1, 2)
 
-        self.checkbox_grouping_1.addWidget(self.lowercase_letters)
-        self.checkbox_grouping_1.addWidget(self.uppercase_letters)
-        self.left_menu.addLayout(self.checkbox_grouping_1)
-
-        self.checkbox_grouping_2.addWidget(self.numbers)
-        self.checkbox_grouping_2.addWidget(self.symbols)
-        self.left_menu.addLayout(self.checkbox_grouping_2)
-
-        self.left_menu.addWidget(self.num_characters)
-        self.left_menu.addWidget(self.theme_toggle)
+        self.outputs.addWidget(self.password)
 
         # * Setup overall page layout and set default window theme
-        self.page.addLayout(self.left_menu)
-        self.page.addWidget(self.password)
+        self.page.addLayout(self.inputs, 0, 0)
+        self.page.addLayout(self.outputs, 0, 2)
 
         self.gui = QWidget()
         self.gui.setLayout(self.page)
