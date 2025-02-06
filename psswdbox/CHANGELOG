@@ -3,3 +3,16 @@
 ## 1.0.0 (24 Jan 2025)
 
 - Initial release
+
+## 1.2.0 (06 Feb 2025)
+
+### Major Changes
+
+### Minor Changes
+
+- [Rearrange UI to make it more compact](https://codeberg.org/melvinquick/psswd_box/issues/1)
+- [Make password output auto-copy to clipboard once password has been generated](https://codeberg.org/melvinquick/psswd_box/issues/2)
+
+### Patch Changes
+
+### Documentation Changes
