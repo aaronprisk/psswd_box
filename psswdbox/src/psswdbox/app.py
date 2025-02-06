@@ -48,20 +48,21 @@ class PsswdBox(QMainWindow):
         self.theme_list = [theme for theme in list(themes)[:-1]]
 
         # * Create end user widgets and apply settings to them
-        self.generate_password = QPushButton("Generate Password")
+        self.generate_password = QPushButton("Generate and Copy Password")
 
         self.password = QLabel(
-            " ", alignment=Qt.AlignmentFlag.AlignCenter, wordWrap=False
+            " ", alignment=Qt.AlignmentFlag.AlignCenter, wordWrap=True
         )
         self.password.setTextInteractionFlags(
             Qt.TextInteractionFlag.TextSelectableByMouse
             | Qt.TextInteractionFlag.TextSelectableByKeyboard
         )
+        self.password.setFixedWidth(520)
 
-        self.lowercase_letters = QCheckBox("Lowercase Letters")
+        self.lowercase_letters = QCheckBox("Lowercase")
         self.lowercase_letters.setCheckState(Qt.CheckState.Checked)
 
-        self.uppercase_letters = QCheckBox("Uppercase Letters")
+        self.uppercase_letters = QCheckBox("Uppercase")
         self.uppercase_letters.setCheckState(Qt.CheckState.Checked)
 
         self.numbers = QCheckBox("Numbers")
@@ -80,27 +81,38 @@ class PsswdBox(QMainWindow):
 
         # * Define button connections and/or actions
         self.generate_password.pressed.connect(self.get_password)
+        self.generate_password.pressed.connect(self.copy_text)
         self.theme_toggle.pressed.connect(self.toggle_theme)
 
         # * Create layouts
-        self.page = QVBoxLayout()
-        self.row_three = QHBoxLayout()
-        self.row_four = QHBoxLayout()
+        self.page = QHBoxLayout()
+
+        self.left_menu = QVBoxLayout()
+        self.left_menu.setSpacing(2)
+
+        self.checkbox_grouping_1 = QHBoxLayout()
+        self.checkbox_grouping_1.setSpacing(2)
+
+        self.checkbox_grouping_2 = QHBoxLayout()
+        self.checkbox_grouping_2.setSpacing(2)
 
         # * Add widgets to layouts
-        self.row_three.addWidget(self.lowercase_letters)
-        self.row_three.addWidget(self.uppercase_letters)
-        self.row_three.addWidget(self.numbers)
-        self.row_three.addWidget(self.symbols)
+        self.left_menu.addWidget(self.generate_password)
 
-        self.row_four.addWidget(self.num_characters)
-        self.row_four.addWidget(self.theme_toggle)
+        self.checkbox_grouping_1.addWidget(self.lowercase_letters)
+        self.checkbox_grouping_1.addWidget(self.uppercase_letters)
+        self.left_menu.addLayout(self.checkbox_grouping_1)
+
+        self.checkbox_grouping_2.addWidget(self.numbers)
+        self.checkbox_grouping_2.addWidget(self.symbols)
+        self.left_menu.addLayout(self.checkbox_grouping_2)
+
+        self.left_menu.addWidget(self.num_characters)
+        self.left_menu.addWidget(self.theme_toggle)
 
         # * Setup overall page layout and set default window theme
+        self.page.addLayout(self.left_menu)
         self.page.addWidget(self.password)
-        self.page.addWidget(self.generate_password)
-        self.page.addLayout(self.row_three)
-        self.page.addLayout(self.row_four)
 
         self.gui = QWidget()
         self.gui.setLayout(self.page)
@@ -132,6 +144,10 @@ class PsswdBox(QMainWindow):
         ]
 
         return character_types
+
+    def copy_text(self):
+        clipboard = QApplication.clipboard()
+        clipboard.setText(self.password.text())
 
     def toggle_theme(self):
         if self.theme_toggle.text() == "Dark":
