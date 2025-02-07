@@ -187,20 +187,17 @@ class PsswdBox(QMainWindow):
         self.num_characters.setFont(font)
 
     def set_font_password(self):
-        text = self.password.text()
-        label_width = self.password.width()
         min_font_size = 11
-        max_font_size = 65
-        current_font_size = max_font_size
+        current_font_size = 65
         font = QFont("Commit Mono Nerd Font")
-        font_metrics = QFontMetrics(font)
 
         while current_font_size >= min_font_size:
             font.setPointSize(current_font_size)
-            font_metrics = QFontMetrics(font)
-            text_width = font_metrics.horizontalAdvance(text)
 
-            if text_width < label_width - 10:
+            if (
+                QFontMetrics(font).horizontalAdvance(self.password.text())
+                < self.password.width() - 10
+            ):
                 self.password.setFont(font)
                 return
 
