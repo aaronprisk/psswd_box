@@ -177,7 +177,6 @@ class PsswdBox(QMainWindow):
         font = QFont("Commit Mono Nerd Font", 9)
 
         self.setFont(font)
-        # self.password.setFont(font)
         self.generate_password.setFont(font)
         self.lowercase_letters.setFont(font)
         self.uppercase_letters.setFont(font)
