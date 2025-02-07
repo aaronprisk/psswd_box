@@ -16,3 +16,16 @@
 ### Patch Changes
 
 ### Documentation Changes
+
+## 1.2.2 (06 Feb 2025)
+
+### Major Changes
+
+### Minor Changes
+
+### Patch Changes
+
+- [Change font family to something more readable](https://codeberg.org/melvinquick/psswd_box/issues/3)
+- [Add ability for password font size to scale](https://codeberg.org/melvinquick/psswd_box/issues/4)
+
+### Documentation Changes

@@ -2,7 +2,7 @@
 [tool.briefcase]
 project_name = "Psswd Box"
 bundle = "com.melvinquick"
-version = "1.2.0"
+version = "1.2.2"
 url = "https://psswdbox.com"
 license.file = "LICENSE"
 author = "Melvin Quick"
