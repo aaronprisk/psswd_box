@@ -6,7 +6,7 @@ import importlib.metadata
 import sys
 
 from PySide6.QtCore import Qt, QSize
-from PySide6.QtGui import QIcon, QPixmap
+from PySide6.QtGui import QFont
 from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
@@ -52,7 +52,7 @@ class PsswdBox(QMainWindow):
         self.generate_password = QPushButton("Generate and Copy Password")
 
         self.password = QLabel(
-            " ", alignment=Qt.AlignmentFlag.AlignCenter, wordWrap=True
+            " ", alignment=Qt.AlignmentFlag.AlignCenter, wordWrap=False
         )
         self.password.setMinimumWidth(560)
 
@@ -107,9 +107,12 @@ class PsswdBox(QMainWindow):
         self.setCentralWidget(self.gui)
 
         self.apply_theme(self.theme_toggle.text().lower())
+        self.set_font()
+        self.set_font_password()
 
     def get_password(self):
         character_types = self.get_character_types()
+        self.set_font_password()
         if character_types == ["n", "n", "n", "n"]:
             self.password.setText("You MUST select one of the character types below!")
         else:
@@ -172,6 +175,38 @@ class PsswdBox(QMainWindow):
             if theme == "dark"
             else self.theme_toggle.setText("Light")
         )
+
+    def set_font(self):
+        font = QFont("Commit Mono Nerd Font", 9)
+
+        self.setFont(font)
+        self.generate_password.setFont(font)
+        self.lowercase_letters.setFont(font)
+        self.uppercase_letters.setFont(font)
+        self.numbers.setFont(font)
+        self.symbols.setFont(font)
+        self.theme_toggle.setFont(font)
+        self.num_characters.setFont(font)
+
+    def set_font_password(self):
+        num_characters = self.num_characters.value()
+        font = QFont("Commit Mono Nerd Font")
+        match num_characters:
+            case num_characters if 10 <= num_characters < 20:
+                font.setPointSize(23)
+                self.password.setFont(font)
+            case num_characters if 20 <= num_characters < 30:
+                font.setPointSize(20)
+                self.password.setFont(font)
+            case num_characters if 30 <= num_characters < 40:
+                font.setPointSize(17)
+                self.password.setFont(font)
+            case num_characters if 40 <= num_characters < 50:
+                font.setPointSize(13)
+                self.password.setFont(font)
+            case num_characters if 50 <= num_characters <= 60:
+                font.setPointSize(11)
+                self.password.setFont(font)
 
 
 def main():
