@@ -6,7 +6,7 @@ import importlib.metadata
 import sys
 
 from PySide6.QtCore import Qt, QSize
-from PySide6.QtGui import QFont
+from PySide6.QtGui import QFont, QFontMetrics
 from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
@@ -54,7 +54,7 @@ class PsswdBox(QMainWindow):
         self.password = QLabel(
             " ", alignment=Qt.AlignmentFlag.AlignCenter, wordWrap=False
         )
-        self.password.setMinimumWidth(560)
+        self.password.setFixedWidth(560)
 
         self.lowercase_letters = QCheckBox("Lowercase")
         self.lowercase_letters.setCheckState(Qt.CheckState.Checked)
@@ -108,11 +108,9 @@ class PsswdBox(QMainWindow):
 
         self.apply_theme(self.theme_toggle.text().lower())
         self.set_font()
-        self.set_font_password()
 
     def get_password(self):
         character_types = self.get_character_types()
-        self.set_font_password()
         if character_types == ["n", "n", "n", "n"]:
             self.password.setText("You MUST select one of the character types below!")
         else:
@@ -120,6 +118,7 @@ class PsswdBox(QMainWindow):
             self.password.setText(
                 psswd.generate_password(character_types, self.num_characters.value())
             )
+            self.set_font_password()
 
     def get_character_types(self):
         lowercase_letters_value = "y" if self.lowercase_letters.isChecked() else "n"
@@ -180,6 +179,7 @@ class PsswdBox(QMainWindow):
         font = QFont("Commit Mono Nerd Font", 9)
 
         self.setFont(font)
+        # self.password.setFont(font)
         self.generate_password.setFont(font)
         self.lowercase_letters.setFont(font)
         self.uppercase_letters.setFont(font)
@@ -189,24 +189,24 @@ class PsswdBox(QMainWindow):
         self.num_characters.setFont(font)
 
     def set_font_password(self):
-        num_characters = self.num_characters.value()
+        text = self.password.text()
+        label_width = self.password.width()
+        min_font_size = 11
+        max_font_size = 65
+        current_font_size = max_font_size
         font = QFont("Commit Mono Nerd Font")
-        match num_characters:
-            case num_characters if 10 <= num_characters < 20:
-                font.setPointSize(23)
+        font_metrics = QFontMetrics(font)
+
+        while current_font_size >= min_font_size:
+            font.setPointSize(current_font_size)
+            font_metrics = QFontMetrics(font)
+            text_width = font_metrics.horizontalAdvance(text)
+
+            if text_width < label_width - 10:
                 self.password.setFont(font)
-            case num_characters if 20 <= num_characters < 30:
-                font.setPointSize(20)
-                self.password.setFont(font)
-            case num_characters if 30 <= num_characters < 40:
-                font.setPointSize(17)
-                self.password.setFont(font)
-            case num_characters if 40 <= num_characters < 50:
-                font.setPointSize(13)
-                self.password.setFont(font)
-            case num_characters if 50 <= num_characters <= 60:
-                font.setPointSize(11)
-                self.password.setFont(font)
+                return
+
+            current_font_size -= 1
 
 
 def main():
