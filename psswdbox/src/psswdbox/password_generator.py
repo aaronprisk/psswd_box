@@ -92,7 +92,6 @@ class PasswordGenerator:
     def generate_password(
         self, character_types=["y", "y", "y", "y"], num_characters=20
     ):
-
         if character_types == ["n", "n", "n", "n"]:
             print("You didn't include any character types... Exiting")
             return exit()
