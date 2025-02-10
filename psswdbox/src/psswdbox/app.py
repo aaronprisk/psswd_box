@@ -5,7 +5,7 @@ Password generator that never leaves your machine.
 import importlib.metadata
 import sys
 
-from PySide6.QtCore import Qt, QSize
+from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont, QFontMetrics
 from PySide6.QtWidgets import (
     QApplication,
@@ -148,14 +148,14 @@ class PsswdBox(QMainWindow):
 
     def apply_theme(self, theme):
         self.main_stylesheet = f"""
-            background-color: {themes[theme]['background-color']};
-            color: {themes[theme]['color']};
-            border: {themes[theme]['border']};
-            border-radius: {themes['general']['border-radius']};
-            padding: {themes['general']['padding']};
+            background-color: {themes[theme]["background-color"]};
+            color: {themes[theme]["color"]};
+            border: {themes[theme]["border"]};
+            border-radius: {themes["general"]["border-radius"]};
+            padding: {themes["general"]["padding"]};
             """
         self.widget_stylesheet = f"""
-            background-color: {themes[theme]['widget-background-color']};
+            background-color: {themes[theme]["widget-background-color"]};
             """
         self.setStyleSheet(self.main_stylesheet)
         self.password.setStyleSheet(self.widget_stylesheet)
@@ -221,5 +221,5 @@ def main():
     QApplication.setApplicationName(metadata["Formal-Name"])
 
     app = QApplication(sys.argv)
-    main_window = PsswdBox()
+    main_window = PsswdBox()  # noqa: F841
     sys.exit(app.exec())
