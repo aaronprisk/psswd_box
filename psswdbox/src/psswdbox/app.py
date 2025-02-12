@@ -116,7 +116,7 @@ class PsswdBox(QMainWindow):
             self.password.setText(
                 psswd.generate_password(character_types, self.num_characters.value())
             )
-            self.set_font_password()
+        self.set_font_password()
 
     def get_character_types(self):
         lowercase_letters_value = "y" if self.lowercase_letters.isChecked() else "n"
