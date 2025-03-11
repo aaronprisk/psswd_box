@@ -1,7 +1,6 @@
 import os
 import sys
 import subprocess
-import tomllib as toml
 
 
 def print_green(skk):
@@ -96,11 +95,18 @@ def create_desktop_file(icon, version, python, app):
 def uninstall_previous_version():
     print("Uninstalling previous version (if any)...", end="")
     subprocess.run(
-        ["curl", "-s", "https://codeberg.org/melvinquick/psswd_box/raw/branch/main/uninstall.py", "|", "python3", "-"],
+        [
+            "curl",
+            "-s",
+            "https://codeberg.org/melvinquick/psswd_box/raw/branch/main/uninstall.py",
+            "|",
+            "python3",
+            "-",
+        ],
         check=True,
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
-        shell=True
+        shell=True,
     )
     print_green("󰄬")
 
@@ -108,7 +114,7 @@ def uninstall_previous_version():
 def install():
     uninstall_previous_version()
     venv_path = get_venv_path()
-    create_venv(venv_path)c
+    create_venv(venv_path)
     install_app(venv_path)
     version = "1.3.0"
     icon = get_icon(venv_path)
