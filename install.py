@@ -52,12 +52,6 @@ def install_app(venv_path):
     print_green("󰄬")
 
 
-def get_version():
-    with open("pyproject.toml", "rb") as f:
-        config = toml.load(f)
-        return config["project"]["version"]
-
-
 def get_icon(venv_path):
     site_packages = os.path.join(venv_path, "lib")
     for folder in os.listdir(site_packages):
@@ -99,11 +93,24 @@ def create_desktop_file(icon, version, python, app):
     print_green("󰄬")
 
 
+def uninstall_previous_version():
+    print("Uninstalling previous version (if any)...", end="")
+    subprocess.run(
+        ["curl", "-s", "https://codeberg.org/melvinquick/psswd_box/raw/branch/main/uninstall.py", "|", "python3", "-"],
+        check=True,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        shell=True
+    )
+    print_green("󰄬")
+
+
 def install():
+    uninstall_previous_version()
     venv_path = get_venv_path()
-    create_venv(venv_path)
+    create_venv(venv_path)c
     install_app(venv_path)
-    version = get_version()
+    version = "1.3.0"
     icon = get_icon(venv_path)
     python = get_python_path(venv_path)
     app = get_app_path(venv_path)
