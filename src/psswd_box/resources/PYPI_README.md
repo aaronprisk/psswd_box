@@ -1,4 +1,4 @@
-<p align="center"> <img src="src/psswd_box/resources/images/psswd_box-256.png" /> </p>
+<p align="center"> <img src=![psswd_box-256.png](https://codeberg.org/melvinquick/psswd_box/src/branch/main/src/psswd_box/resources/images/psswd_box-256.png) /> </p>
 
 ## Donations
 
@@ -11,7 +11,7 @@ The general purpose of this app is to give people an easy way to generate passwo
 
 ## App Showcase
 
-![app_showcase.gif](src/psswd_box/resources/gifs/app_showcase.gif)
+![app_showcase.gif](https://codeberg.org/melvinquick/psswd_box/src/branch/main/src/psswd_box/resources/gifs/app_showcase.gif)
 
 ## Useful Information
 
