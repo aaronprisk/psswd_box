@@ -92,27 +92,7 @@ def create_desktop_file(icon, version, python, app):
     print_green("󰄬")
 
 
-def uninstall_previous_version():
-    print("Uninstalling previous version (if any)...", end="")
-    subprocess.run(
-        [
-            "curl",
-            "-s",
-            "https://codeberg.org/melvinquick/psswd_box/raw/branch/main/uninstall.py",
-            "|",
-            "python3",
-            "-",
-        ],
-        check=True,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-        shell=True,
-    )
-    print_green("󰄬")
-
-
 def install():
-    uninstall_previous_version()
     venv_path = get_venv_path()
     create_venv(venv_path)
     install_app(venv_path)
