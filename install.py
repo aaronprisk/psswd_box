@@ -1,7 +1,7 @@
 import os
 import sys
 import subprocess
-from textwrap import dedent, 
+from textwrap import dedent
 
 
 def print_green(skk):
