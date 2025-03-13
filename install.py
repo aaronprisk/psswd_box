@@ -1,7 +1,7 @@
 import os
 import sys
 import subprocess
-from textwrap import dedent
+from textwrap import dedent, 
 
 
 def print_green(skk):
@@ -86,6 +86,7 @@ def create_desktop_file(icon, version, python, app):
     Terminal=false
     Categories=Utility;
     """)
+    desktop_content = desktop_content.lstrip()
     with open(
         os.path.expanduser("~/.local/share/applications/psswd_box.desktop"), "w"
     ) as f:
