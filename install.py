@@ -79,7 +79,8 @@ def create_desktop_file(icon, version, python, app):
     Version={version}
     Type=Application
     Name=Psswd Box
-    Comment=Password Generator
+    GenericName=Psswd Box
+    Comment=Password generator that never leaves your machine.
     Exec={python} {app}
     Icon={icon}
     Terminal=false
