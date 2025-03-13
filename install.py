@@ -1,6 +1,7 @@
 import os
 import sys
 import subprocess
+from textwrap import dedent
 
 
 def print_green(skk):
@@ -74,19 +75,17 @@ def get_app_path(venv_path):
 def create_desktop_file(icon, version, python, app):
     print("Creating the .desktop entry...", end="")
     sys.stdout.flush()
-    desktop_content = f"""
+    desktop_content = dedent(f"""
     [Desktop Entry]
     Version={version}
     Type=Application
     Name=Psswd Box
-    GenericName=Password Generator
     Comment=Password generator that never leaves your machine.
     Exec={python} {app}
     Icon={icon}
     Terminal=false
-    NoDisplay=false
     Categories=Utility;
-    """
+    """)
     with open(
         os.path.expanduser("~/.local/share/applications/psswd_box.desktop"), "w"
     ) as f:
