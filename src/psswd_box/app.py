@@ -76,29 +76,29 @@ class PsswdBox(QMainWindow):
         self.theme_toggle.pressed.connect(self.toggle_theme)
 
         # * Create layouts
-        self.page = QGridLayout()
-        self.inputs = QGridLayout()
-        self.outputs = QHBoxLayout()
+        page = QGridLayout()
+        inputs = QGridLayout()
+        outputs = QHBoxLayout()
 
         # * Add widgets to layouts
-        self.inputs.addWidget(self.generate_password, 0, 0, 1, 2)
-        self.inputs.addWidget(self.lowercase_letters, 1, 0)
-        self.inputs.addWidget(self.uppercase_letters, 1, 1)
-        self.inputs.addWidget(self.numbers, 2, 0)
-        self.inputs.addWidget(self.symbols, 2, 1)
-        self.inputs.addWidget(self.num_characters, 3, 0, 1, 2)
-        self.inputs.addWidget(self.theme_toggle, 4, 0, 1, 2)
+        inputs.addWidget(self.generate_password, 0, 0, 1, 2)
+        inputs.addWidget(self.lowercase_letters, 1, 0)
+        inputs.addWidget(self.uppercase_letters, 1, 1)
+        inputs.addWidget(self.numbers, 2, 0)
+        inputs.addWidget(self.symbols, 2, 1)
+        inputs.addWidget(self.num_characters, 3, 0, 1, 2)
+        inputs.addWidget(self.theme_toggle, 4, 0, 1, 2)
 
-        self.outputs.addWidget(self.password)
+        outputs.addWidget(self.password)
 
         # * Setup overall page layout and set default window theme
-        self.page.addLayout(self.inputs, 0, 0)
-        self.page.addLayout(self.outputs, 0, 2)
+        page.addLayout(inputs, 0, 0)
+        page.addLayout(outputs, 0, 2)
 
-        self.gui = QWidget()
-        self.gui.setLayout(self.page)
+        gui = QWidget()
+        gui.setLayout(page)
 
-        self.setCentralWidget(self.gui)
+        self.setCentralWidget(gui)
 
         self.apply_theme(self.theme_toggle.text().lower())
         self.set_font()
