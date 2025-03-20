@@ -18,8 +18,8 @@ from PySide6.QtWidgets import (
     QGridLayout,
 )
 
-from psswd_box.password_generator import PasswordGenerator
-from psswd_box.yaml_file_handler import YamlFileHandler
+from .password_generator import PasswordGenerator
+from .yaml_file_handler import YamlFileHandler
 
 config_file = YamlFileHandler("resources/configs/config.yaml")
 config = config_file.load_yaml_file()
