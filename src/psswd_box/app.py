@@ -42,9 +42,6 @@ class PsswdBox(QMainWindow):
             config["window_size"]["width"], config["window_size"]["height"]
         )
 
-        # *  Define normal variables
-        self.theme_list = [theme for theme in list(themes)[:-1]]
-
         # * Create end user widgets and apply settings to them
         self.generate_password = QPushButton("Generate and Copy Password")
 
