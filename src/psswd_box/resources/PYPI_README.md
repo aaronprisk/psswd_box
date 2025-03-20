@@ -15,5 +15,4 @@ Uninstall: `curl -s https://codeberg.org/melvinquick/psswd_box/raw/branch/main/u
 ## Useful Information
 
 [Project Goals](https://codeberg.org/melvinquick/psswd_box/projects/12633)  
-[Latest Release](https://codeberg.org/melvinquick/psswd_box/releases/latest)  
-[Releases](https://codeberg.org/melvinquick/psswd_box/releases)
+[Latest Releases](https://pypi.org/project/psswd_box/)
