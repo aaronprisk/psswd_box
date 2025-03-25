@@ -6,10 +6,7 @@ readme = "src/psswd_box/resources/PYPI_README.md"
 license = "MIT"
 authors = [{ name = "Melvin Quick", email = "melvinquick@proton.me" }]
 requires-python = ">=3.12"
-dependencies = [
-    "pyside6>=6.8.2.1",
-    "pyyaml>=6.0.2",
-]
+dependencies = ["pyside6>=6.8.2.1", "pyyaml>=6.0.2"]
 
 [project.urls]
 repository = "https://codeberg.org/melvinquick/psswd_box"
