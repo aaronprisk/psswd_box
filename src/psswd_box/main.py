@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
-import sys
 import os
-print("QT_PLUGIN_PATH:", os.environ.get("QT_PLUGIN_PATH"))
-print("LD_LIBRARY_PATH:", os.environ.get("LD_LIBRARY_PATH"))
-
-sys.path.insert(0, "/snap/psswd-box/current/lib")
+os.environ.setdefault("QT_QPA_PLATFORM", "xcb")  # fallback if Wayland fails
 
 from psswd_box.app import main
 
